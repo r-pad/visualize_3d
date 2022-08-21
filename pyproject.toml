@@ -1,14 +1,17 @@
 [project]
-name = "python_pkg_template"
+name = "visualize_3d"
 version = "0.1.0"
-description = "A Python Package Template"
+description = "Tools for visualizing 3D stuff."
 readme = "README.md"
 requires-python = ">=3.6"
 license = {file = "LICENSE.txt"}
 authors = [
   {email = "baeisner@andrew.cmu.edu", name = "Ben Eisner"}
 ]
-dependencies = []
+dependencies = [
+  "plotly",
+  "matplotlib",
+]
 
 [build-system]
 requires = [
