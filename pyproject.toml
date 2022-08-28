@@ -11,6 +11,7 @@ authors = [
 dependencies = [
   "plotly",
   "matplotlib",
+  "numpy"
 ]
 
 [build-system]
@@ -30,11 +31,27 @@ develop = [
   "pylint",
   "autoflake",
   "pre-commit",
+  "jupyterlab",
 ]
 build_docs = [
   "mkdocs-material",
   "mkdocstrings[python]",
 ]
 
+# This is required to allow us to have notebooks/ at the top level.
+[tool.setuptools]
+py-modules = ["visualize_3d"]
+
 [tool.isort]
 profile = "black"
+
+[tool.mypy]
+python_version = 3.8
+warn_return_any = true
+warn_unused_configs = true
+
+[[tool.mypy.overrides]]
+module = [
+    "plotly.*"
+]
+ignore_missing_imports = true
