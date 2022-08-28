@@ -40,7 +40,7 @@ build_docs = [
 
 # This is required to allow us to have notebooks/ at the top level.
 [tool.setuptools]
-py-modules = ["visualize_3d"]
+packages = ["visualize_3d"]
 
 [tool.isort]
 profile = "black"
