@@ -5,7 +5,7 @@ import numpy.typing as npt
 import plotly.colors as pc
 import plotly.graph_objects as go
 
-from visualize_3d.primitives import pointcloud
+from rpad.visualize_3d.primitives import pointcloud
 
 
 def _3d_scene(data: npt.ArrayLike) -> Dict:

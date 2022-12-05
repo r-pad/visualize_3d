@@ -1,5 +1,5 @@
 [project]
-name = "visualize_3d"
+name = "rpad-visualize-3d"
 version = "0.1.0"
 description = "Tools for visualizing 3D stuff."
 readme = "README.md"
@@ -38,9 +38,9 @@ build_docs = [
   "mkdocstrings[python]",
 ]
 
-# This is required to allow us to have notebooks/ at the top level.
-[tool.setuptools]
-packages = ["visualize_3d"]
+# Make setuptools only look in the src folder.
+[tool.setuptools.packages.find]
+where = ["src"]
 
 [tool.isort]
 profile = "black"
@@ -49,6 +49,9 @@ profile = "black"
 python_version = 3.8
 warn_return_any = true
 warn_unused_configs = true
+mypy_path = "src"
+namespace_packages = true
+explicit_package_bases = true
 
 [[tool.mypy.overrides]]
 module = [

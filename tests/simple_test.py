@@ -1,6 +1,6 @@
 import numpy as np
 
-import visualize_3d.plots as vpl
+import rpad.visualize_3d.plots as vpl
 
 
 def test_pc():
