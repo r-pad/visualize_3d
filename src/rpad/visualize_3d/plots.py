@@ -77,6 +77,7 @@ def _flow_traces(
     scene="scene",
     flowcolor="red",
     name="flow",
+    legendgroup=None,
 ):
     start = np.array(start)
     flows = np.array(flows)
@@ -111,6 +112,7 @@ def _flow_traces(
         scene=scene,
         line=dict(color=flowcolor, width=10),
         name=name,
+        legendgroup=legendgroup,
     )
 
     head_trace = go.Scatter3d(
@@ -121,6 +123,7 @@ def _flow_traces(
         marker={"size": 3, "color": "darkred"},
         scene=scene,
         showlegend=False,
+        legendgroup=legendgroup,
     )
 
     return [lines_trace, head_trace]
