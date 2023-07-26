@@ -4,39 +4,27 @@ version = "0.1.0"
 description = "Tools for visualizing 3D stuff."
 readme = "README.md"
 requires-python = ">=3.6"
-license = {file = "LICENSE.txt"}
-authors = [
-  {email = "baeisner@andrew.cmu.edu", name = "Ben Eisner"}
-]
-dependencies = [
-  "plotly",
-  "matplotlib",
-  "numpy"
-]
+license = { file = "LICENSE.txt" }
+authors = [{ email = "baeisner@andrew.cmu.edu", name = "Ben Eisner" }]
+dependencies = ["dominate", "matplotlib", "numpy", "plotly"]
 
 [build-system]
-requires = [
-  "setuptools >= 62.3.2,<63",
-  "setuptools-scm",
-  "wheel",
-]
+requires = ["setuptools >= 62.3.2,<63", "setuptools-scm", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project.optional-dependencies]
 develop = [
-  "pytest",
+  "autoflake",
   "black >= 22.3.0",
   "isort",
-  "mypy",
-  "pylint",
-  "autoflake",
-  "pre-commit",
   "jupyterlab",
+  "mypy",
+  "pandas",
+  "pre-commit",
+  "pylint",
+  "pytest",
 ]
-build_docs = [
-  "mkdocs-material",
-  "mkdocstrings[python]",
-]
+build_docs = ["mkdocs-material", "mkdocstrings[python]"]
 
 # Make setuptools only look in the src folder.
 [tool.setuptools.packages.find]
@@ -57,7 +45,5 @@ namespace_packages = true
 explicit_package_bases = true
 
 [[tool.mypy.overrides]]
-module = [
-    "plotly.*"
-]
+module = ["plotly.*", "dominate.*"]
 ignore_missing_imports = true
