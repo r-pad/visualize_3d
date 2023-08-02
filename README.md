@@ -19,6 +19,9 @@ doc = html.PlotlyWebsiteBuilder("Evaluation Visualizations")
 fig = go.Figure()
 doc.add_plot("Sample Category", "Sample ID", fig)
 
+# Add a video to the page.
+doc.add_video("Sample Category", "Sample ID", "./path/to/video.mp4")
+
 # Write the site to disk.
 doc.write_site("./path/to/desired/output/directory")
 ```
