@@ -13,7 +13,7 @@ class PlotlyWebsiteBuilder:
     def __init__(self, title: str):
         self.title = title
         self.cats: Dict[str, List[Tuple[str, go.Figure]]] = defaultdict(list)
-        self.videos: Dict[str, List[Tuple[str, Path]]] = defaultdict(list)
+        self.videos: Dict[str, List[Tuple[str, Union[str, Path]]]] = defaultdict(list)
 
     def add_plot(self, category: str, id: str, plot: go.Figure):
         plot.update_layout(margin=dict(l=5, r=5, t=40, b=5))
@@ -33,7 +33,7 @@ class PlotlyWebsiteBuilder:
             for id, plot in plot_list:
                 obj_id = id.split("_")[0]
                 parsed_ids[cat][obj_id].append((id, plot))
-    
+
         for cat, video_list in self.videos.items():
             parsed_videos[cat] = defaultdict(list)
             for id, video in video_list:
@@ -54,8 +54,12 @@ class PlotlyWebsiteBuilder:
                     with dt.div(id=cat):
                         dt.h1(f"{obj_id} - {cat}")
                         with dt.table():
-                            for i, ((pid, plot), (vid, video)) in enumerate(zip(plot_list, video_list)):
-                                assert pid == vid, f"Video {vid} and image {pid} are from different sample."
+                            for i, ((pid, plot), (vid, video)) in enumerate(
+                                zip(plot_list, video_list)
+                            ):
+                                assert (
+                                    pid == vid
+                                ), f"Video {vid} and image {pid} are from different sample."
                                 id = pid
                                 if i % 3 == 0:
                                     tr = dt.tr()
@@ -74,7 +78,12 @@ class PlotlyWebsiteBuilder:
                                         # Add a video section
                                         video_src = video
                                         with dt.div():
-                                            dt.video(src=video_src, width="640", height="360", controls=True)
+                                            dt.video(
+                                                src=video_src,
+                                                width="640",
+                                                height="360",
+                                                controls=True,
+                                            )
                 with open(os.path.join(site_dir, f"{obj_id}.html"), "w") as f:
                     f.write(str(sub_doc))
 
