@@ -15,7 +15,7 @@ build-backend = "setuptools.build_meta"
 [project.optional-dependencies]
 develop = [
   "autoflake",
-  "black >= 22.3.0",
+  "black == 23.7.0",
   "isort",
   "jupyterlab",
   "mypy",
