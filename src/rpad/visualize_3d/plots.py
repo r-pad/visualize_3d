@@ -8,7 +8,9 @@ import plotly.graph_objects as go
 from rpad.visualize_3d.primitives import pointcloud
 
 
-def _3d_scene(data: npt.ArrayLike, domain_scale: float = 1.0, nogrid: bool = False) -> Dict:
+def _3d_scene(
+    data: npt.ArrayLike, domain_scale: float = 1.0, nogrid: bool = False
+) -> Dict:
     """Create a plotly 3D scene dictionary that gives you a big cube, so aspect ratio is preserved"""
     # Create a 3D scene which is a cube w/ equal aspect ratio and fits all the data.
     data = np.array(data)
@@ -22,12 +24,33 @@ def _3d_scene(data: npt.ArrayLike, domain_scale: float = 1.0, nogrid: bool = Fal
     all_max = max(max(max_x, max_y), max_z) * domain_scale
     if nogrid:
         scene = dict(
-            xaxis=dict(nticks=10, range=[mean[0] - all_max, mean[0] + all_max],
-                    showgrid=False, zeroline=False, showline=False, showticklabels=False, visible=False),
-            yaxis=dict(nticks=10, range=[mean[1] - all_max, mean[1] + all_max],
-                    showgrid=False, zeroline=False, showline=False, showticklabels=False, visible=False),
-            zaxis=dict(nticks=10, range=[mean[2] - all_max, mean[2] + all_max],
-                    showgrid=False, zeroline=False, showline=False, showticklabels=False, visible=False),
+            xaxis=dict(
+                nticks=10,
+                range=[mean[0] - all_max, mean[0] + all_max],
+                showgrid=False,
+                zeroline=False,
+                showline=False,
+                showticklabels=False,
+                visible=False,
+            ),
+            yaxis=dict(
+                nticks=10,
+                range=[mean[1] - all_max, mean[1] + all_max],
+                showgrid=False,
+                zeroline=False,
+                showline=False,
+                showticklabels=False,
+                visible=False,
+            ),
+            zaxis=dict(
+                nticks=10,
+                range=[mean[2] - all_max, mean[2] + all_max],
+                showgrid=False,
+                zeroline=False,
+                showline=False,
+                showticklabels=False,
+                visible=False,
+            ),
             aspectratio=dict(x=1, y=1, z=1),
         )
     else:
